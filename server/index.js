@@ -2,21 +2,23 @@ const express = require('express');
 const app = express();
 const volleyball = require('volleyball');
 const path = require('path');
+const {resolve} = require('path');
 const bodyParser = require('body-parser');
 
 app.use(volleyball);
 
-app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/api', require('./apiRoutes'))
+app.use('/api', require('../apiRoutes'))
 
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, './path/to/index.html');
+  res.sendFile(path.join(__dirname, './public/index.html'));
 });
+//app.get('*', (_, res) => res.sendFile(resolve(__dirname, '..', 'public', 'index.html'))) // Send index.html for any other requests.
 
 
 const port = process.env.PORT || 3000; // this can be very useful if you deploy to Heroku!

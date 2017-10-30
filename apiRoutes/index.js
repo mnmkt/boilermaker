@@ -1,7 +1,9 @@
 const router = require('express').Router();
 
 //router.use('/users', require('./users')); // matches all requests to /api/users/
-
+router.get('/', (req, res, next) => {
+  res.json('HEllO')
+})
 
 router.use(function (req, res, next) {
   const err = new Error('Not found.');

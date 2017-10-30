@@ -1,12 +1,11 @@
-const express = require('express');
-const app = express();
-const volleyball = require('volleyball');
-const path = require('path');
-const bodyParser = require('body-parser');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import store from './store';
 
-app.use(volleyball);
-
-app.use(express.static(path.join(__dirname, './public')));
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+ReactDOM.render(
+  <Provider store={store}>
+    <div>Hello, world!</div>
+  </Provider>,
+  document.getElementById('app') // make sure this is the same as the id of the div in your index.html
+);
